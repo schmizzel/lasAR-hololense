@@ -11,6 +11,7 @@ TagManager:
   - CheckPoint-Laser Pointer-2
   - CheckPoint-Laser Pointer-1
   - ColliderTest
+  - AmpTest
   layers:
   - Default
   - TransparentFX

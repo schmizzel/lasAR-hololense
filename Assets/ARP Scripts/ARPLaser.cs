@@ -1,46 +1,70 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mail;
+using System.ComponentModel.Design;
+using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
 
-
-public class ARPLaser : MonoBehaviour 
+public class ARPLaser
 {
-    private LineRenderer lr;
-    [SerializeField]
-    private Transform startPoint;
-    public Material mat1, mat2;
+    Vector3 pos, dir;
+    GameObject laserObj;
+    LineRenderer laser;
+    List<Vector3> laserIndices = new List<Vector3>();
+    string pointerName;
+    Material mat1, mat2;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public ARPLaser(Vector3 pos, Vector3 dir, Material red, Material green, string name)
     {
-        lr = GetComponent<LineRenderer>();
+        this.laser = new LineRenderer();
+        this.pointerName = name;
+        this.laserObj = new GameObject();
+        this.laserObj.name = "Laser Beam-" + name;
+        this.pos = pos;
+        this.dir = dir;
+        this.mat1 = red;
+        this.mat2 = green;
+
+        this.laser = this.laserObj.AddComponent(typeof(LineRenderer)) as LineRenderer;
+        this.laser.startWidth = 0.02f;
+        this.laser.endWidth = 0.02f;
+        this.laser.material = red;
+
+        CastRay(pos, dir, laser);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser)
     {
-        checkLaserCollison();
+        laserIndices.Add(pos);
+        Ray ray = new Ray(pos, dir);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 30))
+        {
+            CheckHit(hit, dir, laser);
+        }
+        else
+        {
+            laserIndices.Add(ray.GetPoint(30));
+            UpdateLaser();
+        }
     }
 
     void checkLaserCollison()
+    void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser)
     {
-        lr.SetPosition(0, startPoint.position);
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.right, out hit)) { 
 
-        switch (hit.collider.gameObject.tag)
+
+        switch (hitInfo.collider.gameObject.tag)
         {
             case "ColliderTest":
-                lr.SetPosition(1, hit.point);
+                laser.SetPosition(1, hitInfo.point);
                 break;
             case "AmpTest":
-                lr.material = mat2;
+                hitInfo.collider.gameObject.GetComponent<ARPLaserStart>().SetLaserActive(true);
                 break;
-        }
-    }
-        else lr.SetPosition(1, transform.right * 5000);
-    }
 
+        }
+
+    }
 }
