@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Mirror
+  - Wall
+  - LaserPointer
+  - CheckPoint
+  - CheckPoint-Laser Pointer-2
+  - CheckPoint-Laser Pointer-1
+  - ColliderTest
   layers:
   - Default
   - TransparentFX

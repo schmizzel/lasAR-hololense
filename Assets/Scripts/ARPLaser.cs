@@ -22,14 +22,14 @@ public class ARPLaser : MonoBehaviour
     {
         lr.SetPosition(0, startPoint.position);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.right, out hit))
+        if (Physics.Raycast(transform.position, transform.right, out hit))
         {
-            if (hit.collider)
+            if (hit.collider.gameObject.tag == "ColliderTest")
             {
                 lr.SetPosition(1, hit.point);
             }
         }
-        else lr.SetPosition(1, -transform.right * 5000);
+        else lr.SetPosition(1, transform.right * 5000);
     } 
 
 }
