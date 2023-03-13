@@ -21,29 +21,26 @@ public class ARPLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkLaserCollison();
+    }
+
+    void checkLaserCollison()
+    {
         lr.SetPosition(0, startPoint.position);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.right, out hit))
+        if (Physics.Raycast(transform.position, transform.right, out hit)) { 
+
+        switch (hit.collider.gameObject.tag)
         {
-            /**
-            if (hit.collider.gameObject.tag == "ColliderTest")
-            {
+            case "ColliderTest":
                 lr.SetPosition(1, hit.point);
-            }
-
-            */
-
-            switch (hit.collider.gameObject.tag)
-            {
-                case "ColliderTest":
-                    lr.SetPosition(1, hit.point);
-                    break;
-                case "AmpTest":
-                    lr.material = mat2;
-                    break;
-            }
+                break;
+            case "AmpTest":
+                lr.material = mat2;
+                break;
         }
+    }
         else lr.SetPosition(1, transform.right * 5000);
-    } 
+    }
 
 }
