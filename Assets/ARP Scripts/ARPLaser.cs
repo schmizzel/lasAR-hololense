@@ -34,6 +34,10 @@ public class ARPLaser
         this.laser.material = red; // Set the initial material of the LineRenderer to pos
         this.laser.SetPosition(0, pos); // Set the initial position of the LineRenderer to pos
 
+        // Set loop to true and play the sound
+        this.laserSound.loop = true;
+        this.laserSound.Play();
+
         CastRay(pos, dir);
 
         //UnityEngine.Debug.Log("Starting laser: pos = " + pos + ", dir = " + dir);
