@@ -38,5 +38,6 @@ public class ARPLaserStart : MonoBehaviour
     public void ActivateSecondPortal()
     {
         GameObject.Find("Portal2").GetComponent<ARPLaserStart>().SetLaserActive(true);
+        //UnityEngine.Debug.Log("Activated Laser for: " + GameObject.Find("Portal2").name);
     }
 }

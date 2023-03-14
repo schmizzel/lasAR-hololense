@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,6 @@ public class ARPLaser
     Vector3 pos, dir;
     GameObject laserObj;
     LineRenderer laser;
-    List<Vector3> laserIndices = new List<Vector3>();
     string pointerName;
     Material mat1, mat2;
 
@@ -33,6 +33,8 @@ public class ARPLaser
         this.laser.SetPosition(0, pos); // Set the initial position of the LineRenderer to pos
 
         CastRay(pos, dir);
+
+        //UnityEngine.Debug.Log("Starting laser: pos = " + pos + ", dir = " + dir);
     }
 
     void CastRay(Vector3 pos, Vector3 dir)
@@ -55,17 +57,6 @@ public class ARPLaser
         }
     }
 
-    void UpdateLaser()
-    {
-        int count = 0;
-        laser.positionCount = laserIndices.Count;
-        foreach (Vector3 idx in laserIndices)
-        {
-            laser.SetPosition(count, idx);
-            count++;
-        }
-    }
-
     void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser)
     {
 
@@ -74,12 +65,15 @@ public class ARPLaser
         {
             case "ColliderTest":
                 laser.SetPosition(1, hitInfo.point);
+                //UnityEngine.Debug.Log("Hit object with tag: " + hitInfo.collider.gameObject.tag);
                 break;
             case "AmpTest":
                 hitInfo.collider.gameObject.GetComponent<ARPLaserStart>().SetLaserActive(true);
+                //UnityEngine.Debug.Log("Hit object with tag: " + hitInfo.collider.gameObject.tag);
                 break;
             case "PortalTest":
                 hitInfo.collider.gameObject.GetComponent<ARPLaserStart>().ActivateSecondPortal();
+                //UnityEngine.Debug.Log("Activated Laser from: " + hitInfo.collider.gameObject.tag);
                 break;
 
         }
