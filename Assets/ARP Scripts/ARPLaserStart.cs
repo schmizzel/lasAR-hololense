@@ -10,6 +10,7 @@ public class ARPLaserStart : MonoBehaviour
     ARPLaser beam;
     public bool laserActive;
     public Vector3 direction;
+    public AudioSource laserSound;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class ARPLaserStart : MonoBehaviour
         if (laserActive)
         {
             Destroy(GameObject.Find("Laser Beam-" + gameObject.name));
-            beam = new ARPLaser(gameObject.transform.position, direction, mat1, mat2, gameObject.name); // pass in direction variable
+            beam = new ARPLaser(gameObject.transform.position, direction, mat1, mat2, gameObject.name, laserSound); // pass in direction variable
         }
         else
         {

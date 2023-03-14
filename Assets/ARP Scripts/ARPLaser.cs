@@ -13,9 +13,10 @@ public class ARPLaser
     LineRenderer laser;
     string pointerName;
     Material mat1, mat2;
+    AudioSource laserSound;
 
 
-    public ARPLaser(Vector3 pos, Vector3 dir, Material red, Material green, string name)
+    public ARPLaser(Vector3 pos, Vector3 dir, Material red, Material green, string name, AudioSource laserSound)
     {
         this.laser = new LineRenderer();
         this.pointerName = name;
@@ -25,6 +26,7 @@ public class ARPLaser
         this.dir = dir;
         this.mat1 = red;
         this.mat2 = green;
+        this.laserSound = laserSound;
 
         this.laser = this.laserObj.AddComponent(typeof(LineRenderer)) as LineRenderer;
         this.laser.startWidth = 0.02f;

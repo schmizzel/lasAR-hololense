@@ -159,6 +159,7 @@ MonoBehaviour:
   mat2: {fileID: 2100000, guid: 07d2e5fd6fff4824789036d18819d4f2, type: 2}
   laserActive: 0
   direction: {x: 1, y: 0, z: 0}
+  laserSound: {fileID: 0}
 --- !u!65 &36663623
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -347,6 +348,7 @@ MonoBehaviour:
   mat2: {fileID: 2100000, guid: d85456195ae2a9a4f907e57ad0527305, type: 2}
   laserActive: 1
   direction: {x: 1, y: 0, z: 0}
+  laserSound: {fileID: 0}
 --- !u!1 &680972289
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +561,7 @@ MonoBehaviour:
   mat2: {fileID: 2100000, guid: 07d2e5fd6fff4824789036d18819d4f2, type: 2}
   laserActive: 0
   direction: {x: 1, y: 0, z: 0}
+  laserSound: {fileID: 0}
 --- !u!65 &1474354535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -747,3 +750,4 @@ MonoBehaviour:
   mat2: {fileID: 2100000, guid: 07d2e5fd6fff4824789036d18819d4f2, type: 2}
   laserActive: 0
   direction: {x: 1, y: 0, z: 0}
+  laserSound: {fileID: 0}
