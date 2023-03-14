@@ -61,7 +61,7 @@ public class ImageTracking : MonoBehaviour
         string name = trackedImage.referenceImage.name;
         Vector3  position = trackedImage.transform.position;
 
-        GameObject prefabe = spawnedPrefabs[name];
+        GameObject prefab = spawnedPrefabs[name];
         prefab.transform.position = position;
         prefab.SetActive(true);
 
