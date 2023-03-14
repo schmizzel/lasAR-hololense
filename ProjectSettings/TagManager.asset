@@ -12,6 +12,8 @@ TagManager:
   - CheckPoint-Laser Pointer-1
   - ColliderTest
   - AmpTest
+  - Portal2Test
+  - PortalTest
   layers:
   - Default
   - TransparentFX

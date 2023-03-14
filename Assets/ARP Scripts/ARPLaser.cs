@@ -29,28 +29,43 @@ public class ARPLaser
         this.laser = this.laserObj.AddComponent(typeof(LineRenderer)) as LineRenderer;
         this.laser.startWidth = 0.02f;
         this.laser.endWidth = 0.02f;
-        this.laser.material = red;
+        this.laser.material = red; // Set the initial material of the LineRenderer to pos
+        this.laser.SetPosition(0, pos); // Set the initial position of the LineRenderer to pos
 
-        CastRay(pos, dir, laser);
+        CastRay(pos, dir);
     }
 
-    void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser)
+    void CastRay(Vector3 pos, Vector3 dir)
     {
-        laserIndices.Add(pos);
         Ray ray = new Ray(pos, dir);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 30))
+
+        if (Physics.Raycast(ray, out hit))
         {
+            // Update the position of the ending point of the line renderer to the point where the ray hits an object
+            laser.SetPosition(1, hit.point);
+
+            // Check if the object hit by the raycast is a valid target and take appropriate action
             CheckHit(hit, dir, laser);
         }
         else
         {
-            laserIndices.Add(ray.GetPoint(30));
-            UpdateLaser();
+            // If the raycast doesn't hit any objects, set the ending point of the line renderer to be 20 units away from the starting point
+            laser.SetPosition(1, dir * 20 + pos);
         }
     }
 
-    void checkLaserCollison()
+    void UpdateLaser()
+    {
+        int count = 0;
+        laser.positionCount = laserIndices.Count;
+        foreach (Vector3 idx in laserIndices)
+        {
+            laser.SetPosition(count, idx);
+            count++;
+        }
+    }
+
     void CheckHit(RaycastHit hitInfo, Vector3 direction, LineRenderer laser)
     {
 
@@ -62,6 +77,9 @@ public class ARPLaser
                 break;
             case "AmpTest":
                 hitInfo.collider.gameObject.GetComponent<ARPLaserStart>().SetLaserActive(true);
+                break;
+            case "PortalTest":
+                hitInfo.collider.gameObject.GetComponent<ARPLaserStart>().ActivateSecondPortal();
                 break;
 
         }

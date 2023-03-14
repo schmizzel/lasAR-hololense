@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ARPLaserStart : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Material mat1, mat2;
     ARPLaser beam;
     public bool laserActive;
+    public Vector3 direction;
 
-    // Update is called once per frame
+    void Start()
+    {
+        UnityEngine.Debug.Log(gameObject.transform.position);
+    }
+
+
     void Update()
     {
         if (laserActive)
         {
             Destroy(GameObject.Find("Laser Beam-" + gameObject.name));
-            beam = new ARPLaser(gameObject.transform.position, gameObject.transform.right, mat1, mat2, gameObject.name);
-        } else
+            beam = new ARPLaser(gameObject.transform.position, direction, mat1, mat2, gameObject.name); // pass in direction variable
+        }
+        else
         {
             Destroy(GameObject.Find("Laser Beam-" + gameObject.name));
         }
@@ -27,4 +35,8 @@ public class ARPLaserStart : MonoBehaviour
         laserActive = input;
     }
 
+    public void ActivateSecondPortal()
+    {
+        GameObject.Find("Portal2").GetComponent<ARPLaserStart>().SetLaserActive(true);
+    }
 }
