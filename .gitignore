@@ -72,3 +72,24 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Editor/Vuforia.meta
+Assets/Editor/Vuforia/ImageTargetTextures.meta
+Assets/Editor/Vuforia/ImageTargetTextures/Test.meta
+Assets/Editor/Vuforia/ImageTargetTextures/Test/image1_1_scaled.jpg
+Assets/Editor/Vuforia/ImageTargetTextures/Test/image1_1_scaled.jpg.meta
+Assets/Editor/Vuforia/ImageTargetTextures/Test/image2_1_scaled.jpg
+Assets/Editor/Vuforia/ImageTargetTextures/Test/image2_1_scaled.jpg.meta
+Assets/Resources.meta
+Assets/Resources/VuforiaConfiguration.asset
+Assets/Resources/VuforiaConfiguration.asset.meta
+Assets/Scenes/ARP Laser Puzzle.unity
+Assets/StreamingAssets.meta
+Assets/StreamingAssets/Vuforia.meta
+Assets/StreamingAssets/Vuforia/Test.dat
+Assets/StreamingAssets/Vuforia/Test.dat.meta
+Assets/StreamingAssets/Vuforia/Test.xml
+Assets/StreamingAssets/Vuforia/Test.xml.meta
+Assets/XR/Settings/OpenXR Package Settings.asset
+Packages/com.ptc.vuforia.engine-10.13.3.tgz
+Packages/manifest.json
+Packages/packages-lock.json
