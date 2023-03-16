@@ -61,7 +61,9 @@ public class ARPLaserStart : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     bool newValue = Result.CreateFromJSON(webRequest.downloadHandler.text).isStarted;
-                    laserActive = newValue;
+                    if (newValue != laserActive) {
+                        laserActive = newValue;
+                    }                    
                     break;
             }
         }
