@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3169,7 +3169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 987884216}
   mHiddenRoot: {fileID: 0}
-  mTargetName: image1_1
+  mTargetName: image5_1
   mDatasetName: 
   mCastedBehaviour: {fileID: 987884216}
   mMeshFilter: {fileID: 0}
@@ -3245,14 +3245,14 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: image1_1
+  mTrackableName: image5_1
   mInitializedInEditor: 1
   mDataSetPath: 
   mAspectRatio: 0.4994709
   mImageTargetType: 3
-  mWidth: 0.12
-  mHeight: 0.059936505
-  mRuntimeTexture: {fileID: 2800000, guid: e51d601688b87e147ae72484304c1c60, type: 3}
+  mWidth: 0.120000005
+  mHeight: 0.05993651
+  mRuntimeTexture: {fileID: 2800000, guid: 9dbff93024c4b5748a2b6cba02c27b1b, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
