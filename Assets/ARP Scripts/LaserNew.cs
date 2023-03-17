@@ -56,7 +56,7 @@ public class LaserNew {
                 handlePortal("Portal2", depth);
                 break;
             case "Portal2":
-                handlePortal("Portal1", depth)
+                handlePortal("Portal1", depth);
                 break;
             case "Mirror":
                 this.currentMaterial = mat1;
