@@ -20,7 +20,7 @@ public class ARPLaserStart : MonoBehaviour
     void Update(){
         if (laserActive) {
             Destroy(GameObject.Find("Laser Beam"));
-            beam = new LaserNew(gameObject.transform.position, direction, mat1, mat2); 
+            beam = new LaserNew(gameObject.transform.position, gameObject.transform.forward, mat1, mat2); 
         } else {
             Destroy(GameObject.Find("Laser Beam"));
         }
