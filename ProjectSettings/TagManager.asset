@@ -18,6 +18,7 @@ TagManager:
   - Dummy
   - Portal2
   - Portal1
+  - Goal
   layers:
   - Default
   - TransparentFX

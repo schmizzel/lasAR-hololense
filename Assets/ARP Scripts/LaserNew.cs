@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.Networking;
+using System.Collections;
+using System.Collections.Generic;
 
 public class LaserNew {
     public GameObject laserTarget;
@@ -58,7 +61,7 @@ public class LaserNew {
                 break;
             case "Goal":
                 if (this.currentMaterial == mat2) {
-                    openRemoteBox()    
+                    openRemoteBox();
                 }
                 break;
         }
@@ -97,7 +100,8 @@ public class LaserNew {
 
     private void openRemoteBox() {
         Debug.Log("opening box");
-        StartCoroutine(getRequest("http://192.168.1.1:3000/api/open"));
+        GameObject.Find("ScriptController").GetComponent<OpenBox>().openRemoteBox();
+        //StartCoroutine(getRequest("http://192.168.1.1:3000/api/open"));
     }
 
     private IEnumerator getRequest(string uri) {

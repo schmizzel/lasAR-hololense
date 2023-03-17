@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class OpenBox : MonoBehaviour {
+    bool isOpen = false;
+    
     void Start() {}
     void Update(){}
 
     public void openRemoteBox() {
-        Debug.Log("opening box");
-        StartCoroutine(getRequest("http://192.168.1.1:3000/api/open"));
+        if (!isOpen) {
+            StartCoroutine(getRequest("http://192.168.1.1:3000/api/open"));
+            isOpen = true;
+        }
     }
 
     IEnumerator getRequest(string uri) {
