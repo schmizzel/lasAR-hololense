@@ -53,12 +53,10 @@ public class LaserNew {
                 addLaserSegment(hitInfo.point, dir, this.currentMaterial, depth);
                 break;
             case "Portal1":
-                origin = GameObject.FindWithTag("Portal2").transform.position;
-                addLaserSegment(origin, dir, this.currentMaterial, depth);
+                handlePortal("Portal2", depth);
                 break;
             case "Portal2":
-                origin = GameObject.FindWithTag("Portal1").transform.position;
-                addLaserSegment(origin, dir, this.currentMaterial, depth);
+                handlePortal("Portal1", depth)
                 break;
             case "Mirror":
                 this.currentMaterial = mat1;
@@ -112,6 +110,13 @@ public class LaserNew {
 
     private void enableBox() {
        GameObject.Find("ScriptController").GetComponent<OpenBox>().enableBox(); 
+    }
+
+    private void handlePortal(string tag, int depth) {
+        GameObject obj = GameObject.FindWithTag(tag);
+        Vector3 origin = obj.transform.position;
+        Vector3 direction = obj.transform.up;
+        addLaserSegment(origin, direction, this.currentMaterial, depth); 
     }
 
     private IEnumerator getRequest(string uri) {
