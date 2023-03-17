@@ -9,6 +9,10 @@ public class OpenBox : MonoBehaviour {
     void Start() {}
     void Update(){}
 
+    public void enableBox() {
+        isOpen = false;        
+    }
+
     public void openRemoteBox() {
         if (!isOpen) {
             StartCoroutine(getRequest("http://192.168.1.1:3000/api/open"));

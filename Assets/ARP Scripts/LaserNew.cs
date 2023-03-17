@@ -8,6 +8,7 @@ public class LaserNew {
     Material mat1, mat2;
     Material currentMaterial;
     string ignoreTag = "";
+    bool hitBox = false;
 
     public LaserNew(Vector3 pos, Vector3 dir, Material red, Material green) {
         this.laserTarget = new GameObject();
@@ -17,6 +18,10 @@ public class LaserNew {
         this.currentMaterial = this.mat1;
         this.laserTarget.tag = "Laser";
         addLaserSegment(pos, dir, this.mat1, 0);
+
+        if (!hitBox) {
+            enableBox();
+        }
     }
 
     private void addLaserSegment(Vector3 origin, Vector3 direction, Material mat, int depth) {
@@ -61,6 +66,7 @@ public class LaserNew {
                 break;
             case "Goal":
                 if (this.currentMaterial == mat2) {
+                    hitBox = true;
                     openRemoteBox();
                 }
                 break;
@@ -102,6 +108,10 @@ public class LaserNew {
         Debug.Log("opening box");
         GameObject.Find("ScriptController").GetComponent<OpenBox>().openRemoteBox();
         //StartCoroutine(getRequest("http://192.168.1.1:3000/api/open"));
+    }
+
+    private void enableBox() {
+       GameObject.Find("ScriptController").GetComponent<OpenBox>().enableBox(); 
     }
 
     private IEnumerator getRequest(string uri) {
